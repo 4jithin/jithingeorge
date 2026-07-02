@@ -1,0 +1,106 @@
+/* Growth Clarity Co. — shared design tokens & site chrome
+   Used by index.php, pricing.php, contact.php directly, and referenced
+   (for the CSS variables) by diagnostic.php / claim.php which also ship
+   their own page-specific styles. */
+
+:root {
+  --ink: #060f1c;
+  --navy: #0B1F3A;
+  --green: #00E676;
+  --green-2: #1FE07A;
+  --white: #F5F7FA;
+  --slate: #4D6480;
+  --red: #FF5050;
+  --amber: #F0A830;
+  --border-dark: rgba(255,255,255,.08);
+  --ease: cubic-bezier(0.16,1,0.3,1);
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--ink);
+  color: var(--white);
+  font-family: 'Instrument Sans', system-ui, sans-serif;
+}
+
+a { color: inherit; }
+
+.wrap {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
+
+.eyebrow {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--green);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.eyebrow::before { content: ''; width: 16px; height: 1.5px; background: var(--green); }
+
+.lede {
+  font-size: 16px;
+  line-height: 1.65;
+  color: rgba(255,255,255,.5);
+  max-width: 620px;
+}
+
+/* ── Logo (also used inline on diagnostic.php / claim.php) ── */
+.gcc-logo { display: flex; align-items: center; gap: 6px; text-decoration: none; }
+.gcc-logo .star { color: var(--green); font-size: 16px; }
+.gcc-logo .w-growth { font-family: 'Geist', sans-serif; font-weight: 800; font-size: 15px; color: var(--white); letter-spacing: -.02em; }
+.gcc-logo .w-clarity { font-family: 'Geist', sans-serif; font-weight: 800; font-size: 15px; color: var(--green-2); letter-spacing: -.02em; }
+.gcc-logo .w-co { font-family: 'Geist', sans-serif; font-weight: 800; font-size: 15px; color: var(--slate); letter-spacing: -.02em; margin-left: 2px; }
+
+/* ── Site header / nav (index.php, pricing.php, contact.php) ── */
+.site-header {
+  border-bottom: 1px solid var(--border-dark);
+  position: sticky; top: 0; left: 0; right: 0; z-index: 999;
+  background: rgba(6,15,28,.94); backdrop-filter: blur(20px);
+}
+.site-header-inner {
+  max-width: 1120px; margin: 0 auto; padding: 0 24px; height: 64px;
+  display: flex; align-items: center; justify-content: space-between;
+}
+.site-nav { display: flex; align-items: center; gap: 26px; }
+.site-nav a {
+  font-size: 13px; color: rgba(255,255,255,.55); text-decoration: none; transition: color .2s;
+}
+.site-nav a:hover, .site-nav a.is-active { color: var(--white); }
+
+/* ── Buttons ── */
+.btn {
+  display: inline-flex; align-items: center; gap: 10px;
+  border: none; border-radius: 9px; cursor: pointer; text-decoration: none;
+  font-family: 'Instrument Sans', sans-serif; font-weight: 700; letter-spacing: .01em;
+  transition: opacity .2s, transform .15s, border-color .2s, background .2s;
+}
+.btn:hover { transform: translateY(-1px); }
+.btn-green { background: var(--green); color: var(--ink); }
+.btn-green:hover { opacity: .92; }
+.btn-outline-white { background: transparent; color: var(--white); border: 1px solid rgba(255,255,255,.2); }
+.btn-outline-white:hover { border-color: var(--white); background: rgba(255,255,255,.05); }
+.btn-lg { padding: 15px 26px; font-size: 15px; }
+.btn-md { padding: 11px 18px; font-size: 13px; }
+.btn-arrow::after { content: '→'; }
+
+.btn-row { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 8px; }
+
+/* ── Footer ── */
+.site-footer {
+  border-top: 1px solid var(--border-dark);
+  padding: 28px 24px;
+  text-align: center;
+  font-size: 12px;
+  color: rgba(255,255,255,.25);
+}
+.site-footer a { color: rgba(255,255,255,.45); text-decoration: none; }
+.site-footer a:hover { color: var(--white); }
